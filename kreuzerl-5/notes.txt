@@ -1,0 +1,13 @@
+https://sinusoid.es/immer/introduction.html
+
+Please implement data generators for property based testing for the TIC-TAK-TOE game.
+
+These generators shall produce:
+
+    fully filled correct boards
+    fully filled erroneous boards (with wrong tokens e.g. 'A" instead of X, O, ...
+    partially filled correct boards
+    partially filled erroneous boards (e.g. 4 X's and only 2 O's)
+    correct-winning boards
+
+the functions in "correct and erroneous" should not be redundant.

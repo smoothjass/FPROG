@@ -1,0 +1,70 @@
+TODOS
+
+    Use the functions from A2, make them pure and immutable (if you didn't already).
+
+    Transform them into lambdas.
+
+    Curry functionals with more then one "parameter".
+
+
+what are lambdas
+
+    lambda calculus is equivalent to a Turing
+    machine. we can write any program for a modern computer by using lambdas
+    a lambda is just a pure function that can be
+    applied to variables or values
+
+how to write them in C++
+
+    int main(){
+        auto add = [](int first, int second){ return first + second;};
+        cout << add(1,2) << endl; // writes 3
+    }
+    alternative syntax with arrow: auto add = [](int first, int second) -> int { return first + second;};
+    Let's unpack the syntax as follows:
+        - Our lambda starts with []. This block specifies the variables we capture from the
+        context, and we'll see how to use it in a moment. Since we don't capture
+        anything, the block is empty.
+        - Next, we have the parameter list, (int first, int second), as in any other
+        C++ function.
+        - Finally, we write the body of the lambda, using a return statement: { return
+        first + second; }.
+    as class members or static member, make them of type function
+    We can assign a function from a class to a variable. We can then use the variable in the same way that we would use the function
+
+how to ensure they are immutable
+
+    pass:
+        by value: all good, but use const bc reasons
+        by ref: make const: const int& value
+        pointer by value: address is safe. what about value?
+        pointer by ref: protect address like so: (int* const& ). protect value like so (const int* const& value)
+    capture:
+        by value: all good. also no need for contst because compiler knows
+        by ref: need to cast to const when capturing [&immutableValue = as_const(value)]. too complicated, just capture by value
+        pointer by value: address is safe. value is mutable unless pointer points to const variable. or just capture the value of the pointer
+        pointer by ref: address and value both must be protected. that's way to complicated, don't do it
+
+and how to capture values from the context.
+
+    int main(){
+        int first = 5;
+        auto addToFirst = [first](int second){ return first + second;};
+        cout << addToFirst(10) << endl; // writes 15
+    }
+    [first] capture by value
+    [&first] capture by ref. NOTE not immutable
+
+    auto addTheFiveWithDefaultReferenceCapture = [&](){return first + second + third + fourth + fifth;};
+    cout << addTheFiveWithDefaultReferenceCapture() << endl; // writes 35
+    The [&] syntax is telling the compiler to capture all the specified variables from the context
+    by reference. This is the default capture by reference specifier.
+    [&] default capture by ref
+    [=] default capture by value
+
+
+recap pure functions
+
+    They always return the same values for the same argument values
+    They don't have side effects
+    They don't change the values of their parameters

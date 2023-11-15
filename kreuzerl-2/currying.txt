@@ -1,0 +1,19 @@
+What is Currying?
+
+    Currying is a process of decomposing functions with N arguments into N functions with
+    one argument
+
+example
+
+    auto curryAdd = [](const int first){
+        return [first](const int second){
+            return first + second;
+            };
+        };
+    TEST_CASE("Adds values using captured curry"){
+        CHECK_EQ(42, curryAdd(25)(17));
+    }
+    Let's unpack what happens:
+    - Our curryAdd lambda returns a lambda.
+    - The returned lambda captures the first parameter, takes a second argument, and
+    returns their sum.

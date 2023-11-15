@@ -1,0 +1,9 @@
+What do we expect as outputs? Given that the board can have anything on it, or nothing at
+all, we are looking at the following possibilities:
+    Game not started
+    Game in progress
+    X won
+    O won
+    Draw
+
+continue "thinking in functions" S. 16: getting the diagonals

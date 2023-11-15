@@ -1,0 +1,55 @@
+immutability:
+The function does not change any of its arguments before returning.
+The function does not change any data member of the class it belongs to.
+
+pure functions:
+It always returns the same output values for the same input values.
+It has no side effects.
+It does not change the values of the input parameters. (always pass as const reference)
+
+also:
+no global variables
+no cout in pure function. instead, format the output and print it somewhere else
+
+pure functions:
+Pure functions don't have side effects; if they are part of a class, they can be
+static or const.
+Pure functions don't change their parameters, so every parameter has to be of
+the const, const&, or const* const type.
+Pure functions always return values. Technically, we can return a value through
+an output parameter, but it's usually simpler to just return a value. This means
+that pure functions usually don't have a void return type.
+None of the preceding points guarantee the lack of side effects or immutability,
+but they take us close. For example, data members can be marked as mutable and
+the const methods could change them.
+
+what is the deal with loops now?
+functional loops instead of structural
+but hoooooow?
+
+A high-level function is a function that uses other
+functions as parameters in order to allow higher levels of polymorphism.
+e.g. sort(names.begin(), names.end(), compareByFirstName);
+
+
+summary of function signatures:
+Class functions for pass by value:
+static int increment(const int value)
+int increment(const int value) const
+Class functions for pass by reference:
+static int increment(const int& value)
+int increment(const int&value) const
+Class functions for pass pointer by value:
+static const int* increment(const int* const value)
+const int* increment(const int* const value) const
+Class functions for pass pointer by reference:
+static const int* increment(const int* const&
+value)
+const int* increment(const int* const& value) const
+A standalone function for pass by value: int increment(const int value)
+A standalone function for pass by reference: int increment(const int&
+value)
+A standalone function for pass pointer by value: const int*
+increment(const int* value)
+A standalone function for pass pointer by reference: const int*
+increment(const int* const& value)

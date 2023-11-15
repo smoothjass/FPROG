@@ -1,0 +1,25 @@
+we first write one single test that fails, then we implement the
+minimum code to make the test pass, and finally we refactor. We do this in small cycles in
+quick succession.
+
+a test is small, focused, fast, and can fail for only one reason.
+
+In DDT, we write a list of inputs and
+expected outputs and repeat the test over every line of data.
+    TEST_CASE("Greater than") {
+        struct Data {
+        int first;
+        int second;
+        bool expected;
+    } data;
+        SUBCASE("2 is greater than 1") { data.first = 2; data.second = 1;
+            data.expected = true; }
+        SUBCASE("2 is not greater than 2") { data.first = 2; data.second =
+            2; data.expected = false; }
+        SUBCASE("2 is not greater than 3") { data.first = 2; data.second =
+            3; data.expected = false; }
+        CAPTURE(data);
+        CHECK_EQ(greaterThan(data.first, data.second), data.expected);
+    }
+
+continue s. 6 The poker hands problem

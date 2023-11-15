@@ -1,0 +1,1 @@
+Accented letters: é, à, ö, ñ, etc.
